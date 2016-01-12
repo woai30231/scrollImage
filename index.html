@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<title>纯js实现轮播图插件</title>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no"/>
+	<meta name="renderer" content="webkit"/>
+	<link rel="stylesheet" type="text/css" href="./css/index.css"/>
+	<script type="text/javascript" src="./js/index.js"></script>
+</head>
+<body>
+
+	<!--外围div-->
+	<div class="wrap" id="wrap">
+		<ul>
+			<li><a href="javascript:void(0);" title="#"><img src="./images/z-nav1_1.png"></a></li>
+			<li><a href="javascript:void(0);" title="#"><img src="./images/z-nav1_2.png"></a></li>
+			<li><a href="javascript:void(0);" title="#"><img src="./images/z-nav1_3.png"></a></li>
+			<li><a href="javascript:void(0);" title="#"><img src="./images/z-nav1_4.png"></a></li>
+		</ul>
+		<!--左右按钮开始-->
+		<a class="left">
+			左
+		</a>
+		<a class="right">
+			右
+		</a>
+		<!--左右按钮结束-->
+	</div>
+<script type="text/javascript">
+	//body下载好就加载脚本
+	document.body.onload = function(){
+ 		var scrollImage = new ScrollImage("wrap");
+ 	};
+</script>
+</body>
+</html>
