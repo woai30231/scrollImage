@@ -1,0 +1,81 @@
+@charset "utf-8";
+body{
+	font-size:14px;
+	line-height:24px;
+	font-family:"microsoft yahei",Arial;
+	background-color:#fff;
+	color:#333;
+}
+html,body,div,p,a,img,span,ul,li,i,b,ol,dd,dl,dt,table,tbody,thead,input,form,tr,th,td,button,select{
+	margin:0px;
+	padding:0px;
+}
+.wrap{
+	display:block;
+	width:292px;
+	height:380px;
+	overflow:hidden;
+	margin:20px auto;
+	border:1px solid #ccc;
+	-webkit-box-sizing:content-box;
+	-moz-box-sizing:content-box;
+	-ms-box-sizing:content-box;
+	-o-box-sizing:content-box;
+	box-sizing:content-box;
+	position:relative;
+}
+.wrap ul{
+	display:block;
+	list-style:none;
+	position:absolute;
+	left:0px;
+	top:0px;
+}
+.wrap ul:after{
+	display:block;
+	height:0px;
+	clear:both;
+	overflow:hidden;
+	visibility:hidden;
+	content:"";
+}
+.wrap ul li{
+	float:left;
+	width:292px;
+	height:380px;
+}
+.wrap ul li a,.wrap ul li a img{
+	display:block;
+	width:100%;
+	height:100%;
+	margin:0px;
+	padding:0px;
+}
+.wrap .left,.wrap .right{
+	position:absolute;
+	top:50%;
+	width:1.0em;
+	padding:5px;
+	z-index:5;
+	background-color:rgba(236,130,130,0);
+	color:#fff;
+	font-weight:bold;
+	font-size:20px;
+	display:block;
+	margin-top:-0.7em;
+	cursor:pointer;
+	-webkit-transition:all 1s;
+	-moz-transition:all 1s;
+	-ms-transition:all 1s;
+	-o-transition:all 1s;
+	transtion:all 1s;
+}
+.wrap .left{
+	left:5px;
+}
+.wrap .right{
+	right:5px;
+}
+.wrap:hover .left,.wrap:hover .right{
+	background-color:rgba(236,130,130,0.6);
+}
