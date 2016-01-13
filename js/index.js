@@ -20,12 +20,12 @@ ScrollImage.prototype = {
 		//版面滚动的最大left值
 		this.maxLeftPos = (this.liLength-1) * this.navListWidth;
 		this.clearIntervalId = setInterval(function(){
-			_that.LeftInScroll();
-		},1500);
+			_that.leftInScroll.call(_that,id);
+		},3000);
 		//定义一个方法用来获取左边按钮点击方法
-		this._leftInScroll = function(){return _that.leftInScroll.apply(_that);};
+		this._leftInScroll = function(){return _that.leftInScroll.call(_that,id);};
 		//定义一个方法用来获取右边按钮点击方法
-		this._rightInScroll = function(){return _that.rightInScroll.apply(_that);};
+		this._rightInScroll = function(){return _that.rightInScroll.call(_that,id);};
 		//定义一个变量用来判别当前是不是处于运动状态,初始值为0
 		this.distinguishMove = 0;
 		this.wrap.onmouseover = function(){
@@ -33,30 +33,38 @@ ScrollImage.prototype = {
 		};
 		this.wrap.onmouseout = function(){
 			_that.clearIntervalId = setInterval(function(){ 
-				_that.leftInScroll();
-			},1500);
+				_that.leftInScroll.call(_that,id);
+			},3000);
 		};
 		this.addEvent("click",_that.leftBtn,this._leftInScroll);
 		this.addEvent("click",this.rightBtn,this._rightInScroll);
 	},
-	leftInScroll:function(){
+	leftInScroll:function(id){
 		this.leftPos  += this.navListWidth;
 		var _that = this;
-		if(_that.leftPos <= this.maxLeftPos && _that.leftPos >=0){
-			_that.nav.style.left = -_that.leftPos + 'px';
-		}else{
-			_that.leftPos = 0;
-			_that.nav.style.left = 0+ 'px';
+		if(!$("#"+id+" ul").is(":animated")){
+			if(_that.leftPos <= this.maxLeftPos && _that.leftPos >=0){
+				// _that.nav.style.left = -_that.leftPos + 'px';
+				$("#"+id+" ul").animate({left:-_that.leftPos+'px'},1000);
+			}else{
+				_that.leftPos = 0;
+				// _that.nav.style.left = 0+ 'px';
+				$("#"+id+" ul").animate({left:0+'px'},1000);
+			};
 		};
 	},
-	rightInScroll:function(){
+	rightInScroll:function(id){
 		var _that = this;
 		_that.leftPos -= _that.navListWidth;
-		if(_that.leftPos<= this.maxLeftPos && _that.leftPos >=0){
-			_that.nav.style.left = -_that.leftPos + 'px';
-		}else{
-			_that.leftPos = _that.maxLeftPos;
-			_that.nav.style.left = -_that.maxLeftPos + 'px';
+		if(!$("#"+id+" ul").is(":animated")){
+			if(_that.leftPos<= this.maxLeftPos && _that.leftPos >=0){
+				// _that.nav.style.left = -_that.leftPos + 'px';
+				$("#"+id+" ul").animate({left:-_that.leftPos+'px'},1000);
+			}else{
+				_that.leftPos = _that.maxLeftPos;
+				// _that.nav.style.left = -_that.maxLeftPos + 'px';
+				$("#"+id+" ul").animate({left:-_that.maxLeftPos+'px'},1000);
+			};
 		};
 	},
 	wrapWidth:function(){
@@ -66,7 +74,7 @@ ScrollImage.prototype = {
 	addEvent:function(type,dom,handler){
 		return dom.addEventListener?dom.addEventListener(type,handler,false):dom.attachEvent("on"+type,handler);
 	},
-	//这里用来定义实现一个动画的处理
+	//此插件暂时借助于jquery实现动画处理，所以下面的方法暂时不用
 	moveFun:function(distance){
 		console.log("moveFun");
 		var _that = this;
