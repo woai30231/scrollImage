@@ -66,6 +66,7 @@ ScrollImage.prototype = {
 	addEvent:function(type,dom,handler){
 		return dom.addEventListener?dom.addEventListener(type,handler,false):dom.attachEvent("on"+type,handler);
 	},
+	//这里用来定义实现一个动画的处理
 	moveFun:function(distance){
 		console.log("moveFun");
 		var _that = this;
