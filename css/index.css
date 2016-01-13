@@ -69,6 +69,7 @@ html,body,div,p,a,img,span,ul,li,i,b,ol,dd,dl,dt,table,tbody,thead,input,form,tr
 	-ms-transition:all 1s;
 	-o-transition:all 1s;
 	transtion:all 1s;
+	opacity:0;
 }
 .wrap .left{
 	left:5px;
@@ -78,4 +79,5 @@ html,body,div,p,a,img,span,ul,li,i,b,ol,dd,dl,dt,table,tbody,thead,input,form,tr
 }
 .wrap:hover .left,.wrap:hover .right{
 	background-color:rgba(236,130,130,0.6);
+	opacity:1;
 }
